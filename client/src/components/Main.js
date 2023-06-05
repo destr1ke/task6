@@ -59,10 +59,16 @@ export default function Main() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
+    const { recipient, sender } = state;
+    const json = {
+      ...state,
+      recipient: recipient.trim().toLocaleLowerCase(),
+      sender: sender.trim().toLocaleLowerCase(),
+    };
     e.preventDefault();
     fetch("/api/messages/create", {
       method: "POST",
-      body: JSON.stringify(state),
+      body: JSON.stringify(json),
       headers: {
         "Content-Type": "application/json",
       },
