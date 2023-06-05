@@ -22,7 +22,7 @@ export default function Main() {
   useEffect(() => {
     if (!location.state) navigate("/login");
     fetchMessages();
-    const ws = new WebSocket("ws://task6-ipcd.onrender.com/");
+    const ws = new WebSocket("wss://task6-ipcd.onrender.com/");
     ws.onopen = () => {
       console.log("WebSocket connection established");
     };
